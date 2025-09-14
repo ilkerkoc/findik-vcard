@@ -2,7 +2,6 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>İşletme Kartı • GiresunNuts</title>
   <meta name="description" content="GiresunNuts • Resmi iletişim ve bağlantılar. Tek tıkla kaydet, ara, yaz, konumu aç.">
@@ -109,149 +108,258 @@
     "sameAs": [
       "https://www.facebook.com/giresunnuts",
       "https://www.instagram.com/giresunnuts",
-      "https://www.trendyol.com/magaza/giresunnuts-m-123456",
+      "https://www.trendyol.com/magaza/giresunnuts-m-1155114",
       "https://www.hepsiburada.com/magaza/giresunnuts"
     ]
   }
   </script>
+  
+  <!-- Tailwind CSS 4 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'accent': '#0ea5e9',
+            'ring': 'rgba(14,165,233,.35)',
+          },
+          fontFamily: {
+            'sans': ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.3s ease-out',
+            'bounce-subtle': 'bounceSubtle 0.6s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(10px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            bounceSubtle: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-2px)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
   <style>
-    :root{
-      --bg: #0b0c10; --card:#111218; --text:#e7e9ee; --muted:#a9b0bf;
-      --accent:#0ea5e9; --ring: rgba(14,165,233,.35); --btn:#1a1c24;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --bg-dark: #0b0c10;
+      --card-dark: #111218;
+      --text-dark: #e7e9ee;
+      --muted-dark: #a9b0bf;
+      --btn-dark: #1a1c24;
     }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f6f7fb; --card:#ffffff; --text:#0e1116; --muted:#5b6577; --btn:#f1f5f9; }
+    
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg-light: #f6f7fb;
+        --card-light: #ffffff;
+        --text-light: #0e1116;
+        --muted-light: #5b6577;
+        --btn-light: #f1f5f9;
+      }
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:radial-gradient(1200px 600px at 50% -10%, rgba(14,165,233,.09), transparent), var(--bg);
-      color:var(--text); display:flex; align-items:center; justify-content:center; padding:24px;
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
-    .wrap{width:100%; max-width:640px}
-    .card{
-      background:var(--card); border:1px solid rgba(255,255,255,.06);
-      border-radius:22px; padding:28px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+    
+    .gradient-bg {
+      background: radial-gradient(1200px 600px at 50% -10%, rgba(14,165,233,.09), transparent), 
+                  var(--bg-dark, #0b0c10);
     }
-    .top{display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; margin-bottom:24px;}
-    .logo{
-      width:150px; height:150px;  overflow:hidden; flex:none;
-      border:1px solid rgba(255,255,255,.08); background:#fff;
+    
+    @media (prefers-color-scheme: light) {
+      .gradient-bg {
+        background: radial-gradient(1200px 600px at 50% -10%, rgba(14,165,233,.09), transparent), 
+                    var(--bg-light, #f6f7fb);
+      }
     }
-    .logo img{width:100%; height:100%; object-fit:cover}
-    .title{display:flex; flex-direction:column; gap:4px; align-items:center}
-    .title h1{margin:0; font-size:1.6rem; letter-spacing:.2px}
-    .title p{margin:0; color:var(--muted)}
-    .badges{display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; justify-content:center}
-    .badge{font-size:.78rem; padding:4px 10px; border-radius:999px; background:var(--btn); border:1px solid rgba(255,255,255,.08); color:var(--muted)}
-    .btns{margin-top:22px; display:grid; gap:12px}
-    .btn{
-      display:flex; align-items:center; gap:10px; padding:14px 16px; border-radius:14px;
-      background:var(--btn); color:var(--text); text-decoration:none; border:1px solid rgba(255,255,255,.08);
-      transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+    
+    .card-glass {
+      background: var(--card-dark, #111218);
+      border: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
     }
-    .btn:hover{transform:translateY(-1px); border-color:var(--accent); box-shadow:0 0 0 6px var(--ring)}
-    .btn .sub{font-size:.9rem; color:var(--muted)}
-    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    @media (max-width:480px){ .row{grid-template-columns:1fr} }
+    
+    @media (prefers-color-scheme: light) {
+      .card-glass {
+        background: var(--card-light, #ffffff);
+        border: 1px solid rgba(0,0,0,.06);
+      }
+    }
+    
+    .btn-hover {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-hover:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 6px var(--ring);
+    }
+    
+    .text-muted {
+      color: var(--muted-dark, #a9b0bf);
+    }
+    
+    @media (prefers-color-scheme: light) {
+      .text-muted {
+        color: var(--muted-light, #5b6577);
+      }
+    }
+    
+    .btn-bg {
+      background: var(--btn-dark, #1a1c24);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    
+    @media (prefers-color-scheme: light) {
+      .btn-bg {
+        background: var(--btn-light, #f1f5f9);
+        border: 1px solid rgba(0,0,0,.08);
+      }
+    }
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <div class="card">
-      <div class="top">
-        <div class="logo">
-          <img src="logo-500.png" alt="Giresunnuts Logo">
+<body class="min-h-screen gradient-bg text-white dark:text-gray-100 flex items-center justify-center p-6">
+  <div class="w-full max-w-2xl animate-fade-in">
+    <div class="card-glass rounded-3xl p-8 shadow-2xl animate-slide-up">
+      <!-- Header Section -->
+      <div class="flex flex-col items-center text-center space-y-4 mb-8">
+        <div class="w-36 h-36 rounded-2xl overflow-hidden flex-shrink-0 border border-white/10 bg-white p-2">
+          <img src="logo-500.png" alt="Giresunnuts Logo" class="w-full h-full object-cover rounded-xl">
         </div>
-        <div class="title">
-          <h1>Giresunnuts</h1>
-          <p>Dünyanın En İyisi, Tabiatın Mucizesi 🌰</p>
-          <p>Giresun'un dünyaca ünlü Tombul Fındığı, tescilli kalitesi ve yoğun aromasıyla fark yaratıyor. Yüksek yağ oranı ve güvenli üretimiyle Giresunnuts’ta sizi bekliyor.
-        </p>
-          <div class="badges">
-          
-            <span class="badge">Giresun • TR-28-K-010608</span>
+        <div class="space-y-2">
+          <h1 class="text-3xl font-bold tracking-tight">Giresunnuts</h1>
+          <p class="text-lg text-muted">Dünyanın En İyisi, Tabiatın Mucizesi 🌰</p>
+          <p class="text-sm text-muted max-w-md leading-relaxed">
+            Giresun'un dünyaca ünlü Tombul Fındığı, tescilli kalitesi ve yoğun aromasıyla fark yaratıyor. 
+            Yüksek yağ oranı ve güvenli üretimiyle Giresunnuts'ta sizi bekliyor.
+          </p>
+          <div class="flex flex-wrap gap-2 justify-center mt-3">
+            <span class="px-3 py-1 text-xs rounded-full btn-bg text-muted">
+              Giresun • TR-28-K-010608
+            </span>
           </div>
         </div>
       </div>
-      <div class="btns">
-        <div class="row">
-        <a class="btn" href="tel:+905421834028">
-          <span>📞</span>
-          <div>
-            <div>Telefon ile Ara</div>
-            <div class="sub">0542 183 40 28</div>
-          </div>
-        </a>
-     
-        <a class="btn" href="https://wa.me/905421834028" target="_blank">
-          <span>💬</span>
-          <div>
-            <div>WhatsApp</div>
-            <div class="sub">0542 183 40 28</div>
-          </div>
-        </a>
-        </div>
-        <a class="btn" href="https://maps.app.goo.gl/TraLLE7DnQqNfVLUA" target="_blank">
-          <span>📍</span>
-          <div>
-            <div>Konumu Aç</div>
-            <div class="sub">Küçükköy Mah. Sivas Cd. No:97/A Merkez - Giresun </div>
-          </div>
-        </a>
-        <div class="row">
-          <a class="btn" href="https://www.trendyol.com/magaza/giresunnuts-m-1155114" target="_blank">
-            <span>🛒</span>
+
+      <!-- Action Buttons -->
+      <div class="space-y-4">
+        <!-- Primary Actions Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="tel:+905421834028" 
+             class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+            <span class="text-2xl">📞</span>
             <div>
-              <div>Trendyol</div>
-              <div class="sub">Online Mağaza</div>
+              <div class="font-medium">Telefon ile Ara</div>
+              <div class="text-sm text-muted">0542 183 40 28</div>
             </div>
           </a>
-          <a class="btn" href="https://www.hepsiburada.com/magaza/giresunnuts" target="_blank">
-            <span>📦</span>
+          
+          <a href="https://wa.me/905421834028" target="_blank"
+             class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+            <span class="text-2xl">💬</span>
             <div>
-              <div>Hepsiburada</div>
-              <div class="sub">Mağazamız</div>
+              <div class="font-medium">WhatsApp</div>
+              <div class="text-sm text-muted">0542 183 40 28</div>
             </div>
           </a>
         </div>
-        <div class="row">
-        <a class="btn" href="https://www.facebook.com/giresunnuts" target="_blank">
-          <span>📘</span>
+
+        <!-- Location Button -->
+        <a href="https://maps.app.goo.gl/TraLLE7DnQqNfVLUA" target="_blank"
+           class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+          <span class="text-2xl">📍</span>
           <div>
-            <div>Facebook</div>
-            <div class="sub">@giresunnuts</div>
-          </div>
-        </a>  <a class="btn" href="https://www.instagram.com/giresunnuts" target="_blank">
-          <span>📸</span>
-          <div>
-            <div>Instagram</div>
-            <div class="sub">@giresunnuts</div>
+            <div class="font-medium">Konumu Aç</div>
+            <div class="text-sm text-muted">Küçükköy Mah. Sivas Cd. No:97/A Merkez - Giresun</div>
           </div>
         </a>
-    </div>
-        <a class="btn" href="https://giresunnuts.com" target="_blank">
-          <span>🌐</span>
+
+        <!-- E-commerce Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="https://www.trendyol.com/magaza/giresunnuts-m-1155114" target="_blank"
+             class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+            <span class="text-2xl">🛒</span>
+            <div>
+              <div class="font-medium">Trendyol</div>
+              <div class="text-sm text-muted">Online Mağaza</div>
+            </div>
+          </a>
+          
+          <a href="https://www.hepsiburada.com/magaza/giresunnuts" target="_blank"
+             class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+            <span class="text-2xl">📦</span>
+            <div>
+              <div class="font-medium">Hepsiburada</div>
+              <div class="text-sm text-muted">Mağazamız</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Social Media Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="https://www.facebook.com/giresunnuts" target="_blank"
+             class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+            <span class="text-2xl">📘</span>
+            <div>
+              <div class="font-medium">Facebook</div>
+              <div class="text-sm text-muted">@giresunnuts</div>
+            </div>
+          </a>
+          
+          <a href="https://www.instagram.com/giresunnuts" target="_blank"
+             class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+            <span class="text-2xl">📸</span>
+            <div>
+              <div class="font-medium">Instagram</div>
+              <div class="text-sm text-muted">@giresunnuts</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Website Button -->
+        <a href="https://giresunnuts.com" target="_blank"
+           class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+          <span class="text-2xl">🌐</span>
           <div>
-            <div>Web Sitesi</div>
-            <div class="sub">//giresunnuts.com</div>
+            <div class="font-medium">Web Sitesi</div>
+            <div class="text-sm text-muted">//giresunnuts.com</div>
           </div>
         </a>
-        <a class="btn" href="mailto:info@giresunnuts.com">
-            <span>✉️</span>
-            <div>
-              <div>E-posta Gönder</div>
-              <div class="sub">info@giresunnuts.com</div>
-            </div>
-          </a>
-        <a class="btn" href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Giresunnuts%0AORG:Giresunnuts%0ATITLE:Fındık Üreticisi%0ATEL:+905421834028%0AEMAIL:info@giresunnuts.com%0AURL:https://giresunnuts.com%0AADR:;;Küçükköy Mah. Sivas Cd. No:97/A;Giresun;;28000;Turkey%0AGEO:40.9126;38.3895%0ANOTE:Giresun'un dünyaca ünlü Tombul Fındığı%0AEND:VCARD" download="Giresunnuts.vcf">
-            <span>📇</span>
-            <div>
-              <div>Telefona Kaydet</div>
-              <div class="sub">vCard İndir</div>
-            </div>
-          </a>
+
+        <!-- Email Button -->
+        <a href="mailto:info@giresunnuts.com"
+           class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group">
+          <span class="text-2xl">✉️</span>
+          <div>
+            <div class="font-medium">E-posta Gönder</div>
+            <div class="text-sm text-muted">info@giresunnuts.com</div>
+          </div>
+        </a>
+
+        <!-- vCard Button -->
+        <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Giresunnuts%0AORG:Giresunnuts%0ATITLE:Fındık Üreticisi%0ATEL:+905421834028%0AEMAIL:info@giresunnuts.com%0AURL:https://giresunnuts.com%0AADR:;;Küçükköy Mah. Sivas Cd. No:97/A;Giresun;;28000;Turkey%0AGEO:40.9126;38.3895%0ANOTE:Giresun'un dünyaca ünlü Tombul Fındığı%0AEND:VCARD" 
+           download="Giresunnuts.vcf"
+           class="btn-hover btn-bg flex items-center gap-3 p-4 rounded-2xl text-white dark:text-gray-100 no-underline group animate-bounce-subtle">
+          <span class="text-2xl">📇</span>
+          <div>
+            <div class="font-medium">Telefona Kaydet</div>
+            <div class="text-sm text-muted">vCard İndir</div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
